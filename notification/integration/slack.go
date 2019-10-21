@@ -5,7 +5,6 @@ import (
 	"github.com/argoproj-labs/argo-kube-notifier/pkg/apis/argoproj/v1alpha1"
 	"github.com/argoproj-labs/argo-kube-notifier/util"
 	"github.com/nlopes/slack"
-	log "github.com/sirupsen/logrus"
 	"k8s.io/client-go/kubernetes"
 )
 

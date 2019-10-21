@@ -7,7 +7,6 @@ import (
 	"github.com/argoproj-labs/argo-kube-notifier/notification/integration"
 	"github.com/argoproj-labs/argo-kube-notifier/pkg/apis/argoproj/v1alpha1"
 	"github.com/argoproj-labs/argo-kube-notifier/util"
-	log "github.com/sirupsen/logrus"
 	"html/template"
 	apiv1 "k8s.io/api/core/v1"
 	apierr "k8s.io/apimachinery/pkg/api/errors"
@@ -24,6 +23,8 @@ import (
 )
 
 const DELAY_WATCH_EVENT = "DELAY_WATCH"
+
+var log = util.GetLogger()
 
 type NewNotificationController struct {
 	ObjectQueue        workqueue.RateLimitingInterface

@@ -10,8 +10,20 @@ import (
 	"k8s.io/client-go/dynamic"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/util/retry"
+	"os"
 	config2 "sigs.k8s.io/controller-runtime/pkg/client/config"
 )
+
+func GetLogger() *log.Logger {
+	logger := log.New()
+	if debug, ok := os.LookupEnv("DEBUG"); ok {
+		if debug == "true" {
+			logger.Level = log.DebugLevel
+		}
+		log.Debug("Logger level set [DEBUG]")
+	}
+	return logger
+}
 
 // GetSecrets retrieves a secret value and memoizes the result
 func GetSecrets(clientSet kubernetes.Interface, namespace, name, key string) ([]byte, error) {
